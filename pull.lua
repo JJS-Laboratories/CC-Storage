@@ -25,8 +25,8 @@ for i=0,#chests do --# This loop will go from the first element of the table to 
     table.insert(functionTable, function()
         i1 = 1
         if found3 < (tonumber(args[2]*1)) and done1 == false then
+            print("Searching slots "..i1.." to "..chests[i].size().." in chest "..i)
             for i1=1,chests[i].size() do
-                print("Slot "..i1.." In "..i)
                 list1 = chests[i].list()
                 if list1[i1] ~= nil then
                     if list1[i1]["name"] == args[1] and done1 == false then
@@ -39,7 +39,8 @@ for i=0,#chests do --# This loop will go from the first element of the table to 
         end
     end)
 end
-pretty.print(pretty.pretty(functionTable))
 parallel.waitForAll(table.unpack(functionTable))
-print("Pulled "..found3.."/"..args[2]..(" (Max is 64)"))
-print("Done!")
+print("Pulled "..found3.."/"..args[2])
+if found3 < tonumber(args[2]) then
+    shell.execute("pull",args[1],tostring(tonumber(args[2])-found3))
+end
