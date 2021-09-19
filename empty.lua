@@ -11,12 +11,13 @@ chestOut = peripheral.find("ironchest:iron_chest")
 
 i1 = chestOut.size()
 i2 = 1
+count2 = 0
 repeat
     i3 = 0
     repeat
-        chests[i3].pullItems(peripheral.getName(chestOut),i2)
+        count2 = count2+chests[i3].pullItems(peripheral.getName(chestOut),i2)
         i3 = i3+1
     until chestOut.getItemDetail(i2) == nil
     i2 = i2+1
 until i2 == i1+1
-print("Done")
+print("Transferred "..count2.." items.")

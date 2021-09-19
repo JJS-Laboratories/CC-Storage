@@ -17,9 +17,10 @@ done1 = false
 found1 = 0
 found3 = 0
 
-local functionTable = {}
+
 
 print("Beginning process! (Slow)")
+local functionTable = {}
 for i=0,#chests do --# This loop will go from the first element of the table to the last element of the table. In this case, just 2 elements
     table.insert(functionTable, function()
         i1 = 1
